@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud Mobile Game</title>
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#0f0f1a;
+    color:white;
+}
+.container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+.card{
+    background:#1b1b2f;
+    padding:25px;
+    border-radius:15px;
+    width:90%;
+    max-width:350px;
+    box-shadow:0 0 20px #00ffcc33;
+}
+h2{
+    text-align:center;
+}
+input{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:none;
+    border-radius:8px;
+}
+button{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    border:none;
+    border-radius:8px;
+    background:#00ffcc;
+    font-weight:bold;
+    cursor:pointer;
+}
+button:hover{
+    background:#00ccaa;
+}
+.link{
+    text-align:center;
+    margin-top:10px;
+    cursor:pointer;
+    color:#00ffcc;
+}
+.game-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+.game-card{
+    background:#1b1b2f;
+    padding:10px;
+    border-radius:10px;
+    text-align:center;
+}
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    padding:15px;
+    background:#141428;
+}
+.hidden{
+    display:none;
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginPage" class="container">
+    <div class="card">
+        <h2>Cloud Game Login</h2>
+        <input type="email" placeholder="อีเมล">
+        <input type="password" placeholder="รหัสผ่าน">
+        <button onclick="showDashboard()">เข้าสู่ระบบ</button>
+        <div class="link" onclick="showRegister()">สมัครสมาชิก</div>
+    </div>
+</div>
+
+<!-- REGISTER -->
+<div id="registerPage" class="container hidden">
+    <div class="card">
+        <h2>สมัครสมาชิก</h2>
+        <input type="text" placeholder="ชื่อผู้ใช้">
+        <input type="email" placeholder="อีเมล">
+        <input type="password" placeholder="รหัสผ่าน">
+        <button onclick="showLogin()">สมัครสมาชิก</button>
+        <div class="link" onclick="showLogin()">กลับหน้า Login</div>
+    </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboardPage" class="hidden">
+    <div class="topbar">
+        <div>☁ Cloud Mobile</div>
+        <button onclick="logout()">ออกจากระบบ</button>
+    </div>
+
+    <div style="padding:15px;">
+        <h2>เกมมือถือทั้งหมด</h2>
+        <div class="game-grid">
+            <div class="game-card">
+                <h4>PUBG Mobile</h4>
+                <button onclick="playGame('PUBG Mobile')">เล่น</button>
+            </div>
+            <div class="game-card">
+                <h4>Free Fire</h4>
+                <button onclick="playGame('Free Fire')">เล่น</button>
+            </div>
+            <div class="game-card">
+                <h4>Genshin Impact</h4>
+                <button onclick="playGame('Genshin Impact')">เล่น</button>
+            </div>
+            <div class="game-card">
+                <h4>ROV</h4>
+                <button onclick="playGame('ROV')">เล่น</button>
+            </div>
+        </div>
+
+        <h2 style="margin-top:30px;">แพ็กเกจสมาชิก</h2>
+        <div class="game-card">
+            <h4>Premium 199฿/เดือน</h4>
+            <button onclick="alert('สมัคร Premium สำเร็จ (จำลอง)')">สมัคร</button>
+        </div>
+    </div>
+</div>
+
+<script>
+function showRegister(){
+    document.getElementById("loginPage").classList.add("hidden");
+    document.getElementById("registerPage").classList.remove("hidden");
+}
+function showLogin(){
+    document.getElementById("registerPage").classList.add("hidden");
+    document.getElementById("loginPage").classList.remove("hidden");
+}
+function showDashboard(){
+    document.getElementById("loginPage").classList.add("hidden");
+    document.getElementById("dashboardPage").classList.remove("hidden");
+}
+function logout(){
+    document.getElementById("dashboardPage").classList.add("hidden");
+    document.getElementById("loginPage").classList.remove("hidden");
+}
+function playGame(name){
+    alert("กำลังเชื่อมต่อคลาวด์เพื่อเล่น " + name + " (จำลองระบบ)");
+}
+</script>
+
+</body>
+</html>
